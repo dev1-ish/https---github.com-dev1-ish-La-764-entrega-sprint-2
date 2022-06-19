@@ -19,7 +19,8 @@
         </div>
         <form class="row g-3 needs-validation" novalidate>
             <div class="form-floating col-md-6">
-                <input type="text" class="form-control" id="name" placeholder="Ejemplo: Paula" required>
+                <!-- NOT WORKING: HTML ATTRIBUTE PATTERN -->
+                <input type="text" pattern="[a-Z]" class="form-control" id="name" placeholder="Ejemplo: Paula" required>
                 <label for="floatingInput" class="form-label">Nombre</label>
                 <div class="invalid-feedback">
                     Ingrese un nombre.
@@ -44,7 +45,7 @@
         </form>
         <div class="row g-3 justify-content-evenly">
             <div class="col">
-                <div class="card" id="">
+                <div class="card" id="list">
                     <div class="card-header">Nombre y gasto:</div>
                     <ul id="nombreYmonto" class="list-group list-group-flush"></ul>
                 </div>
@@ -69,6 +70,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="button-reset d-grid col-4 mx-auto">
+            <button class="btn btn-outline-primary me-md-2" id="reset">Borrar todo</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

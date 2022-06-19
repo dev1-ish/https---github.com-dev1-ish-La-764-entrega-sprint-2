@@ -52,6 +52,16 @@ const submitInputs = function (submitWithEnter){
 })
 
 
+// 5- REVISAR FORM VALIDATION (HTML attribute pattern is not working):
+
+// ALPHAONLY for name input (not num)
+
+/* NO FUNCIONA -aplicado a input clase alphaOnly - bug: no toma los valores
+$('.alphaOnly').bind('keyup blur',function(){ 
+    var node = $(this);
+    node.val(node.val().replace(/[^a-z ]/g,'') ); }
+);
+*/
 
 // si hubiera checkbox
 
@@ -73,11 +83,11 @@ inputCost.addEventListener("change", (evt) => catchCost(evt));
 const catchName = (evt) => (peopleName = evt.target.value);
 const catchCost = (evt) => (cost = evt.target.value);
 
-// 2- modificar/ ELIMINAR F(X) -> HECHA LA VALIDACIÓN
+// 2- MODIFICADA, crea item, sale alerta || modificar/ ELIMINAR F(X) -> HECHA LA VALIDACIÓN
 
 const ejecutar = () => {
   if (cost >= 1) {
-    mostrarNombreYmonto(peopleName, cost);
+    createNewUl(peopleName, cost);
     inputName.value = "";
     inputCost.value = "";
   } else {
@@ -88,21 +98,52 @@ const ejecutar = () => {
 
 
 
-const nameArray = []
-const costArray = []
+// const nameArray = []
+// const costArray = []
 const cardSumData = document.getElementById("card-text-sum")
 const cardAvgData = document.getElementById("card-text-avg")
 
-// 3- REVISAR/MODIFICAR F(X)
+// 3- REVISAR/MODIFICAR F(X) -- LISTO --
 
-function mostrarNombreYmonto(_nombre, _monto) {
-  nameArray.push(_nombre)
-  costArray.push(_monto * 1)
-  listaNombreYmonto.innerHTML += `<li class="list-group-item">${_nombre}: $${_monto}</li>`;
-}
+// function mostrarNombreYmonto(_nombre, _monto) {
+//   nameArray.push(_nombre)
+//   costArray.push(_monto * 1)
+//   createNewUl;
+//   listaNombreYmonto.innerHTML += `<li class="list-group-item">${_nombre}: $${_monto}</li>`;
+// }
 
 
 // 4- SACAR BOTONES P/TOTAL, REALIZAR CÁLCULO DINÁMICO
+
+
+
+
+// const parent = document.getElementById("list");
+// const theChildNodes = parent.childNodes;
+// parent.appendChild(newList)
+
+// document.body.onload = addElement;
+
+// function addElement() {
+//   const newUl = document.createElement("ul");
+//   const newContent = document.createTextNode(`${_nombre}: $${_monto}`);
+//   newUl.appendChild(newContent);
+//   const currentDiv = document.getElementById("list");
+//   document.body.insertBefore(newUl, currentDiv);
+// }
+
+
+
+function createNewUl(_nombre, _monto) {
+  const currentDiv = document.getElementById("list");
+  currentDiv.insertAdjacentHTML("beforeend", `<li class="list-group-item">${_nombre}: $${_monto}</li>`);
+}
+
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', () => {
+  document.location.reload();
+});
+
 
 const initialValue = 0;
 
