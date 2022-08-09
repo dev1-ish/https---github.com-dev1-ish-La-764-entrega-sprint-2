@@ -87,9 +87,14 @@ const catchCost = (evt) => (cost = evt.target.value);
 
 const ejecutar = () => {
   if (cost >= 1) {
+    // NEW ISSUE: no hace push al array //
+    addArray;
     createNewUl(peopleName, cost);
     inputName.value = "";
     inputCost.value = "";
+    // NEW: ejecutar f(x) -revisar funcionamiento //
+    calculateSum();
+    calculateAvg();
   } else {
     alert('Ingrese un monto válido')
   }
@@ -99,7 +104,7 @@ const ejecutar = () => {
 
 
 // const nameArray = []
-// const costArray = []
+const costArray = []
 const cardSumData = document.getElementById("card-text-sum")
 const cardAvgData = document.getElementById("card-text-avg")
 
@@ -132,7 +137,9 @@ const cardAvgData = document.getElementById("card-text-avg")
 //   document.body.insertBefore(newUl, currentDiv);
 // }
 
-
+const addArray = (_monto) => {
+  costArray.push(_monto * 1);
+}
 
 function createNewUl(_nombre, _monto) {
   const currentDiv = document.getElementById("list");
